@@ -5,6 +5,7 @@ import pandas as pd
 from find_algorithms import simple_search
 from find_algorithms import binary_search
 from find_algorithms import quick_sort
+from collections import defaultdict
 
 from Train import Train
 from generation import generate
@@ -40,11 +41,11 @@ for j in nums:
     key = Train(random.choice(names), "01/01/2000", "", "", "", "")
 
     """Поиск по ключу в массиве"""
-    train_map = {}
+    train_multi_map = defaultdict(list)
     for train in trains[j]:
-        train_map[train.train_name] = train
+        train_multi_map[train.train_name].append(train)
     starttime1 = timeit.default_timer()
-    print(train_map[key.train_name].train_name)
+    print(train_multi_map[key.train_name])
     end1 = timeit.default_timer() - starttime1
     time_spent_key.append(end1)
 
